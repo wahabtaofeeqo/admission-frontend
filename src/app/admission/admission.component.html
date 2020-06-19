@@ -1,0 +1,339 @@
+<main class="main bg-light">
+	<app-navbar></app-navbar>
+
+	<div class="wrapper p4-5">
+		<div class="container">
+			<div class="w-100 py-5">
+				<form [formGroup]="admissionForm" (ngSubmit)="apply(admissionForm.value)" class="row">
+					<div class="col-lg-6 pl-0">
+
+						<h4 class="h5 mb-4">Personal Info</h4>
+
+						<input type="hidden" formControlName="email" value="{{email}}">
+
+						<div class="form-group">
+							<label>Father's Name</label>
+							<input type="text" class="form-control" placeholder="Father's Name" formControlName="father" required>
+						</div>
+
+						<div class="form-group">
+							<label>Father's Phone Number</label>
+							<input type="text" min="0" class="form-control" placeholder="Father's Phone Number" formControlName="fatherNumber">
+						</div>
+
+						<div class="form-group">
+							<label>Mother's Name</label>
+							<input type="text" class="form-control" placeholder="Mother's Name" formControlName="mother">
+						</div>
+
+						<div class="form-group">
+							<label>Father's Occupation</label>
+							<input type="text" class="form-control" placeholder="Father's Occupation" formControlName="occupation">
+						</div>
+
+						<div class="form-group">
+							<label>Gender</label>
+							<select class="form-control" formControlName="sex">
+								<option value=""></option>
+								<option value="male">Male</option>
+								<option value="female">Female</option>
+							</select>
+						</div>
+
+						<div class="form-group">
+							<label>Address</label>
+							<textarea rows="4" class="form-control" formControlName="address" placeholder="Address"></textarea>
+						</div>
+
+						<div class="form-group">
+							<label>Religion</label>
+							<select class="form-control" formControlName="religion">
+								<option value=""></option>
+								<option value="muslim">Muslim</option>
+								<option value="christain">Christain</option>
+							</select>
+						</div>
+
+						<h4 class="h5 mb-3">Academic Info</h4>
+						
+						<div class="form-group">
+							<label>Jamb Score</label>
+							<input type="number" min="50" class="form-control" placeholder="Jamb Score" formControlName="score">
+						</div>
+					</div>
+
+					<div class="col-lg-6">
+
+						<div class="form-group">
+							<label>Faculty/School</label>
+							<select class="form-control" formControlName="school" (ngModelChange)="populate($event)">
+								<option value=""></option>
+								<option value="science">Science and Technology</option>
+								<option value="management">Business and Management Studies</option>
+								<option value="communication">Communication and Information Technology</option>
+								<option value="environmental">Environmental Studies</option>
+								<option value="engineering">Engineering</option>
+							</select>
+						</div>
+
+						<div class="form-group">
+							<label>Department</label>
+							<select class="form-control" formControlName="department">
+								<option *ngFor="let dept of departments" value="{{dept}}">
+									{{dept}}
+								</option>
+							</select>
+						</div>
+
+						<div class="form-row">
+							<div class="form-group col-lg-6">
+								<label>O'Level</label>
+								<select class="form-control" formControlName="olevel1">
+									<option value=""></option>
+									<option value="English Language">English Language</option>
+									<option value="Mathematics">Mathematics</option>
+									<option value="Literature in English">Literature in English</option>
+									<option value="Chemistry">Chemistry</option>
+									<option value="Physics">Physics</option>
+									<option value="Biology">Biology</option>
+									<option value="Government">Government</option>
+									<option value="Computer Studies">Computer Studies</option>
+									<option value="Agricultural science">Agricultural science</option>
+									<option value="Economics">Economics</option>
+									<option value="French language">French language</option>
+									<option value="Geography">Geography</option>
+									<option value="Further mathematics">Further mathematics</option>
+								</select>
+							</div>
+
+							<div class="form-group col-lg-6">
+								<label>Grade</label>
+								<input type="text" class="form-control" placeholder="Grade" formControlName="grade1">
+							</div>
+						</div>
+
+						<div class="form-row">
+							<div class="form-group col-lg-6">
+								<label>O'Level</label>
+								<select class="form-control" formControlName="olevel2">
+									<option value=""></option>
+									<option value="English Language">English Language</option>
+									<option value="Mathematics">Mathematics</option>
+									<option value="Literature in English">Literature in English</option>
+									<option value="Chemistry">Chemistry</option>
+									<option value="Physics">Physics</option>
+									<option value="Biology">Biology</option>
+									<option value="Government">Government</option>
+									<option value="Computer Studies">Computer Studies</option>
+									<option value="Agricultural science">Agricultural science</option>
+									<option value="Economics">Economics</option>
+									<option value="French language">French language</option>
+									<option value="Geography">Geography</option>
+									<option value="Further mathematics">Further mathematics</option>
+								</select>
+							</div>
+
+							<div class="form-group col-lg-6">
+								<label>Grade</label>
+								<input type="text" class="form-control" placeholder="Grade" formControlName="grade2">
+							</div>
+						</div>
+
+						<div class="form-row">
+							<div class="form-group col-lg-6">
+								<label>O'Level</label>
+								<select class="form-control" formControlName="olevel3">
+									<option value=""></option>
+									<option value="English Language">English Language</option>
+									<option value="Mathematics">Mathematics</option>
+									<option value="Literature in English">Literature in English</option>
+									<option value="Chemistry">Chemistry</option>
+									<option value="Physics">Physics</option>
+									<option value="Biology">Biology</option>
+									<option value="Government">Government</option>
+									<option value="Computer Studies">Computer Studies</option>
+									<option value="Agricultural science">Agricultural science</option>
+									<option value="Economics">Economics</option>
+									<option value="French language">French language</option>
+									<option value="Geography">Geography</option>
+									<option value="Further mathematics">Further mathematics</option>
+								</select>
+							</div>
+
+							<div class="form-group col-lg-6">
+								<label>Grade</label>
+								<input type="text" class="form-control" placeholder="Grade" formControlName="grade3">
+							</div>
+						</div>
+
+						<div class="form-row">
+							<div class="form-group col-lg-6">
+								<label>O'Level</label>
+								<select class="form-control" formControlName="olevel4">
+									<option value=""></option>
+									<option value="English Language">English Language</option>
+									<option value="Mathematics">Mathematics</option>
+									<option value="Literature in English">Literature in English</option>
+									<option value="Chemistry">Chemistry</option>
+									<option value="Physics">Physics</option>
+									<option value="Biology">Biology</option>
+									<option value="Government">Government</option>
+									<option value="Computer Studies">Computer Studies</option>
+									<option value="Agricultural science">Agricultural science</option>
+									<option value="Economics">Economics</option>
+									<option value="French language">French language</option>
+									<option value="Geography">Geography</option>
+									<option value="Further mathematics">Further mathematics</option>
+								</select>
+							</div>
+
+							<div class="form-group col-lg-6">
+								<label>Grade</label>
+								<input type="text" class="form-control" placeholder="Grade" formControlName="grade4">
+							</div>
+						</div>
+
+						<div class="form-row">
+							<div class="form-group col-lg-6">
+								<label>O'Level</label>
+								<select class="form-control" formControlName="olevel5">
+									<option value=""></option>
+									<option value="English Language">English Language</option>
+									<option value="Mathematics">Mathematics</option>
+									<option value="Literature in English">Literature in English</option>
+									<option value="Chemistry">Chemistry</option>
+									<option value="Physics">Physics</option>
+									<option value="Biology">Biology</option>
+									<option value="Government">Government</option>
+									<option value="Computer Studies">Computer Studies</option>
+									<option value="Agricultural science">Agricultural science</option>
+									<option value="Economics">Economics</option>
+									<option value="French language">French language</option>
+									<option value="Geography">Geography</option>
+									<option value="Further mathematics">Further mathematics</option>
+								</select>
+							</div>
+
+							<div class="form-group col-lg-6">
+								<label>Grade</label>
+								<input type="text" class="form-control" placeholder="Grade" formControlName="grade5">
+							</div>
+						</div>
+
+						<div class="form-row">
+							<div class="form-group col-lg-6">
+								<label>O'Level</label>
+								<select class="form-control" formControlName="olevel6">
+									<option value=""></option>
+									<option value="English Language">English Language</option>
+									<option value="Mathematics">Mathematics</option>
+									<option value="Literature in English">Literature in English</option>
+									<option value="Chemistry">Chemistry</option>
+									<option value="Physics">Physics</option>
+									<option value="Biology">Biology</option>
+									<option value="Government">Government</option>
+									<option value="Computer Studies">Computer Studies</option>
+									<option value="Agricultural science">Agricultural science</option>
+									<option value="Economics">Economics</option>
+									<option value="French language">French language</option>
+									<option value="Geography">Geography</option>
+									<option value="Further mathematics">Further mathematics</option>
+								</select>
+							</div>
+
+							<div class="form-group col-lg-6">
+								<label>Grade</label>
+								<input type="text" class="form-control" placeholder="Grade" formControlName="grade6">
+							</div>
+						</div>
+
+						<div class="form-row">
+							<div class="form-group col-lg-6">
+								<label>O'Level</label>
+								<select class="form-control" formControlName="olevel7">
+									<option value=""></option>
+									<option value="English Language">English Language</option>
+									<option value="Mathematics">Mathematics</option>
+									<option value="Literature in English">Literature in English</option>
+									<option value="Chemistry">Chemistry</option>
+									<option value="Physics">Physics</option>
+									<option value="Biology">Biology</option>
+									<option value="Government">Government</option>
+									<option value="Computer Studies">Computer Studies</option>
+									<option value="Agricultural science">Agricultural science</option>
+									<option value="Economics">Economics</option>
+									<option value="French language">French language</option>
+									<option value="Geography">Geography</option>
+									<option value="Further mathematics">Further mathematics</option>
+								</select>
+							</div>
+
+							<div class="form-group col-lg-6">
+								<label>Grade</label>
+								<input type="text" class="form-control" placeholder="Grade" formControlName="grade7">
+							</div>
+						</div>
+
+						<div class="form-row">
+							<div class="form-group col-lg-6">
+								<label>O'Level</label>
+								<select class="form-control" formControlName="olevel8">
+									<option value=""></option>
+									<option value="English Language">English Language</option>
+									<option value="Mathematics">Mathematics</option>
+									<option value="Literature in English">Literature in English</option>
+									<option value="Chemistry">Chemistry</option>
+									<option value="Physics">Physics</option>
+									<option value="Biology">Biology</option>
+									<option value="Government">Government</option>
+									<option value="Computer Studies">Computer Studies</option>
+									<option value="Agricultural science">Agricultural science</option>
+									<option value="Economics">Economics</option>
+									<option value="French language">French language</option>
+									<option value="Geography">Geography</option>
+									<option value="Further mathematics">Further mathematics</option>
+								</select>
+							</div>
+
+							<div class="form-group col-lg-6">
+								<label>Grade</label>
+								<input type="text" class="form-control" placeholder="Grade" formControlName="grade8">
+							</div>
+						</div>
+
+						<div class="form-row">
+							<div class="form-group col-lg-6">
+								<label>O'Level</label>
+								<select class="form-control" formControlName="olevel9">
+									<option value=""></option>
+									<option value="English Language">English Language</option>
+									<option value="Mathematics">Mathematics</option>
+									<option value="Literature in English">Literature in English</option>
+									<option value="Chemistry">Chemistry</option>
+									<option value="Physics">Physics</option>
+									<option value="Biology">Biology</option>
+									<option value="Government">Government</option>
+									<option value="Computer Studies">Computer Studies</option>
+									<option value="Agricultural science">Agricultural science</option>
+									<option value="Economics">Economics</option>
+									<option value="French language">French language</option>
+									<option value="Geography">Geography</option>
+									<option value="Further mathematics">Further mathematics</option>
+								</select>
+							</div>
+
+							<div class="form-group col-lg-6">
+								<label>Grade</label>
+								<input type="text" class="form-control" placeholder="Grade" formControlName="grade9">
+							</div>
+						</div>
+
+						<div class="text-center">
+							<button class="btn btn-danger px-5 mt-4">Submit Application</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</main>

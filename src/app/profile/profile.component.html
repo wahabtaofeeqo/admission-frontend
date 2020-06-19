@@ -1,0 +1,38 @@
+<div class="container-fluid h-100 bg-light">
+	<div class="row full-row">
+		<aside class="col-lg-2 bg-primary">
+			<app-stu-sidebar></app-stu-sidebar>
+		</aside>
+
+		<main class="col-lg-10 p-4">
+			<div class="row">
+				<div class="container">
+					<div class="col-lg-8 mt-5 mx-auto">
+						<div class="card">
+							<div class="card-body">
+								<h4 class="h5 text-center py-5" *ngIf="applied && status == 0">
+									No Admission Yet
+								</h4>
+
+								<h4 class="h5 text-center py-5" *ngIf="applied && status == 1">
+									You Have been given the admission
+								</h4>
+
+								<div *ngIf="!applied">
+									<h5 class="text-center py-5">
+										You have no application history. Click the below link to apply for the school admission
+									</h5>
+
+									<div class="text-center mt-4">
+										<a href="/admission" class="btn btn-danger">Start Application</a>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+</div>

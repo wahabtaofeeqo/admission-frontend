@@ -1,0 +1,46 @@
+<div class="container-fluid h-100 bg-light">
+	<div class="row full-row">
+		<aside class="col-lg-2 bg-danger">
+			<app-sidebar></app-sidebar>
+		</aside>
+
+		<main class="col-lg-10 p-4">
+			<div class="row">
+				<div class="container-fluid">
+					<h4 class="h4 mb-4">Applicant Details</h4>
+					<hr>
+
+					<div *ngIf="details != null" class="mb-4">
+						<p>Firstname: {{details.firstname}}</p>
+						<p>Lastname: {{details.lastname}}</p>
+						<p>Othername: {{details.othernames}}</p>
+						<p>Phone Number: {{details.phone}}</p>
+						<p>Email: {{details.email}}</p>
+						<p>Total Points: {{details.points}}</p>
+					</div>
+
+					<table class="table table-striped" *ngIf="grades != null && olevels != null">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>O'level</th>
+								<th>Grade</th>
+							</tr>
+						</thead>
+
+						<tbody>
+								<tr *ngFor="let olevel of olevels; index as i">
+									<td>{{(i + 1)}}</td>
+									<td>{{olevel}}</td>
+									<td *ngIf="grades[i] != null">{{grades[i] | uppercase}}</td>
+									<td *ngIf="grades[i] == null">
+										F
+									</td>
+								</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</main>
+	</div>
+</div>

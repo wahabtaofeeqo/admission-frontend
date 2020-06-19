@@ -1,0 +1,45 @@
+<div class="container-fluid h-100 bg-light">
+	<div class="row full-row">
+		<aside class="col-lg-2 bg-danger">
+			<app-sidebar></app-sidebar>
+		</aside>
+
+		<main class="col-lg-10 p-4">
+			<div class="row">
+				<div class="container-fluid">
+					<h4 class="h4 mb-4">Applicants</h4>
+				</div>
+
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Firstname</th>
+							<th>Lastname</th>
+							<th>Phone</th>
+							<th>Course applied</th>
+							<th>Jamb</th>
+							<th>Point</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr *ngIf="applicants == null">
+							<td colspan="7" class="text-center py-4"><h4>No Record Found</h4></td>
+						</tr>
+
+						<tr *ngFor="let applicant of applicants; index as i">
+							<td>{{(i + 1)}}</td>
+							<td>{{applicant.firstname}}</td>
+							<td>{{applicant.lastname}}</td>
+							<td>{{applicant.phone}}</td>
+							<td>{{applicant.department}}</td>
+							<td>{{applicant.jamb}}</td>
+							<td>{{applicant.points}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</main>
+	</div>
+</div>

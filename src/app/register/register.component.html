@@ -1,0 +1,53 @@
+<main class="main bg-light">
+	<app-navbar class="normal"></app-navbar>
+
+	<div class="wrapper">
+		<div class="container">
+			<div class="col-lg-8 mx-auto mt-4 mb-3">
+				<div class="card">
+					<div class="card-header py-0">
+						<h4 class="card-title h5 mt-2">Create Account</h4>
+					</div>
+
+					<form [formGroup]="createForm" (ngSubmit)="register(createForm.value)">
+						<div class="card-body">
+							<div class="form-group">
+								<label for="">Firstname</label>
+								<input type="text" class="form-control" placeholder="Firstname" formControlName="firstname">
+							</div>
+
+							<div class="form-group">
+								<label for="">Lastname</label>
+								<input type="text" class="form-control" placeholder="Lastname" formControlName="lastname">
+							</div>
+
+							<div class="form-group">
+								<label for="">Othernames</label>
+								<input type="text" class="form-control" placeholder="Othernames" formControlName="others">
+							</div>
+
+							<div class="form-group">
+								<label for="">Email</label>
+								<input type="email" class="form-control" placeholder="Email" formControlName="email">
+							</div>
+
+							<div class="form-group">
+								<label for="">Phone</label>
+								<input type="text" class="form-control" placeholder="Phone" formControlName="phone">
+							</div>
+
+							<div class="form-group">
+								<label for="">Password</label>
+								<input type="text" formControlName="password" class="form-control" placeholder="Password" required>
+							</div>
+						</div>
+
+						<div class="card-footer py-2">
+							<button class="btn btn-dark px-5">Register</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
